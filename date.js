@@ -21,8 +21,7 @@ const date = (input) => {
     if (!moment(input, moment.ISO_8601, true).isValid() && !moment(input, 'ddd, DD MMM YYYY HH:mm:ss ZZ', true).isValid()) {
         throw new Error('Invalid date format. Please use a valid RFC2822 or ISO format.');
     }
-    console.log('DATE', moment(input));
-
+    
     return moment(input);
 };
 

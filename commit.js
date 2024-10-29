@@ -1,6 +1,5 @@
 module.exports = class Commit {
     constructor({ date, name, message }) {
-        
         this.date = date;
         this.name = name;
         this.message = message;
