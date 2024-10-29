@@ -17,14 +17,17 @@ const date = (input) => {
         return moment().subtract(amount, matches[2]);
     }
 
-    // Validate input date format
-    if (!moment(input, moment.ISO_8601, true).isValid() && !moment(input, 'ddd, DD MMM YYYY HH:mm:ss ZZ', true).isValid()) {
-        throw new Error('Invalid date format. Please use a valid RFC2822 or ISO format.');
+    if (!moment(input, moment.ISO_8601, true).isValid() &&
+        !moment(input, 'ddd, DD MMM YYYY HH:mm:ss ZZ', true).isValid() &&
+        !moment(input, 'YYYY.MM.DD', true).isValid()) {
+        throw new Error('Invalid date format. Please use a valid RFC2822, ISO, or YYYY.MM.DD format.');
     }
-    
+
+    if (moment(input, 'YYYY.MM.DD', true).isValid()) {
+        return moment(input, 'YYYY.MM.DD', true);
+    }
+
     return moment(input);
 };
-
-
 
 module.exports = date;
